@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Failed</title>
+</head>
+<body>
+    <h1>Payment Failed</h1>
+    <p>Status: {{ payment.status }}</p>
+    <p>Reference: {{ payment.reference }}</p>
+    <a href="/">Return to Home</a>
+</body>
+</html>
+
+<!-- payment_error.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Error</title>
+</head>
+<body>
+    <h1>Payment Error</h1>
+    <p>{{ error }}</p>
+    <a href="/">Return to Home</a>
+</body>
+</html>

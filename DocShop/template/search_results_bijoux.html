@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form class="search" method="get" action="{% url 'search_bijoux' %}">
+      <input class="rech" type="text" name="q" placeholder="Rechercher...">
+      <button class="bouton-rech" type="submit">OK</button>
+</form>
+
+<h1>Resultat de recherche</h1>
+
+{% if results %}
+
+     {% for Bijoux in results %}
+<style>
+    article {
+        background:#8d1e3a;
+        padding-bottom:80px;
+        width:300px;
+        border-radius:20px;
+        float:left;
+        margin-left:20px;
+        margin-top:15px;
+        text-align:center;
+    }
+    article:hover {
+        transform: scale(1.1);
+    }
+
+    h2{
+        text-align:center;
+        margin: 15px 0 15px 0;
+        padding-top:30px;
+    }
+
+    .voir{
+        background-color:#fff;
+        color:#444;
+        padding:20px;
+        border-radius:10px;
+        position:static;
+    }
+    .voir:hover{
+        background:#444;
+        color:#fff;
+    }
+    #product{
+        display:inline-block;
+        padding: 20px;
+    }
+    .rech{
+        padding-left:20px;
+        border-radius:5px;
+        padding-top:20px;
+      }
+      .bouton-rech{
+           background-color:#8d1e3a;
+           border-radius:4px;
+           padding-right:5px;
+           padding-top:20px;
+       }
+       .bouton-rech:hover{
+           background-color:#444;
+       }
+     .search{
+        float:right;
+        margin-right:2%;
+        position:relative;
+        top: 35px;
+      }
+    body{
+        background-color: #d4dde4;
+    }
+
+
+</style>
+<nav id="product">
+    <ul>
+        <li>
+            <article>
+                <p>
+                    <h2>{{ Bijoux.name }}</h2>
+                    <img src="{{ Bijoux.thumbnail.url }}" alt="{{ Bijoux.name }}" style="max-width: 200px; max-height: 150px"><br><br><br>
+                    <a class="voir" href="{{ Bijoux.get_absolute_url }}">Voir l'article</a>
+                </p>
+
+            </article>
+        </li>
+    </ul>
+</nav>
+     {% endfor %}
+
+{% else %}
+
+<style>
+    .rech{
+        padding-left:20px;
+        border-radius:5px;
+        padding-top:20px;
+      }
+      .bouton-rech{
+           background-color:#8d1e3a;
+           border-radius:4px;
+           padding-right:5px;
+           padding-top:20px;
+       }
+       .bouton-rech:hover{
+           background-color:#444;
+       }
+     .search{
+        float:right;
+        margin-right:2%;
+        position:relative;
+        top: 5px;
+      }
+    #result{
+        text-align:center;
+    }
+
+</style>
+
+    <h1 id="result">Aucun resultat trouve.</h1>
+{% endif %}
+{% endblock %}

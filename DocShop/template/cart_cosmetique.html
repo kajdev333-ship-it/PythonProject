@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+  .delete {
+    color: #fff;
+    background-color: blue;
+    padding: 10px;
+    border-radius: 10px;
+    float: right;
+    margin-right: 20px;
+    text-transform: uppercase;
+  }
+  .delete:hover {
+    background-color: #ff0000;
+  }
+  .panier-cosmetique {
+    width: 400px;
+    height: 600px;
+    background: #fd7587;
+    border-radius: 10px;
+    margin: 20px;
+    text-align: center;
+  }
+  h2, p {
+    text-align: center;
+    text-transform: uppercase;
+  }
+  nav ul li {
+    float: left;
+    list-style: none;
+  }
+  nav {
+    display: inline-block;
+  }
+  .buyc {
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+  }
+  .buyc:hover {
+    background-color: #444;
+  }
+  #delete {
+    padding: 5px;
+  }
+  #delete:hover {
+    background-color: red;
+  }
+</style>
+
+<a class="delete" href="{% url 'delete-cart-cosmetique' %}">Vider le panier cosmétique</a>
+
+{% for order in orders %}
+<nav>
+  <ul>
+    <li>
+      <div class="panier-cosmetique">
+        <p>
+          <h2>{{ order.Cosmetique.name }}</h2>
+          <h2>{{ order.Cosmetique.price }} XAF</h2>
+          <img src="{{ order.Cosmetique.thumbnail.url }}" alt="{{ order.Cosmetique.name }}" style="max-width: 250px; max-height: 500px;">
+          <p>{{ order.quantity }} dans le panier</p><br>
+          <form action="{% url 'buyc' order.Cosmetique.slug %}" method="post">
+            {% csrf_token %}
+            <label for="quantity-{{ order.id }}">QUANTITE</label>
+            <input id="quantity-{{ order.id }}" type="number" name="quantity" value="{{ order.quantity }}" style="max-width: 50px;" min="1">
+            <br><br>
+            <button type="submit" class="buyc">Acheter</button>
+          </form>
+          <br>
+          <form action="{% url 'supprimer_order_cosmetique' order.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit" id="delete">Supprimer</button>
+          </form>
+        </p>
+      </div>
+    </li>
+  </ul>
+</nav>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<style>
+    .panier{
+        color:#444;
+        background-color:#3b4eff;
+        padding:10px;
+        border-radius:10px;
+        margin-bottom:40px;
+        text-transform:uppercase;
+
+    }
+    .panier:hover{
+        background:#1cff66;
+    }
+
+    .detail{
+        width:auto;
+        height:auto;
+        background:#8692f7;
+        border-radius:10px;
+        margin-bottom: 20px;
+        text-align:center;
+    }
+    h2, h3, p{
+        text-align:center;
+        text-transform:uppercase;
+    }
+</style>
+
+<section class="detail min-vh-100">
+    <p>
+        <h2>{{ product.name }}</h2>
+    <h3>{{ product.price }} FR</h3>
+    <img src="{{ product.thumbnail.url }}" alt="{{ product.name }}" style="max-width: 450px; max-height: 500px;">
+    <p> {{ product.description }}</p>
+    <p> {{ product.stock }} en stock</p><br>
+
+    {% if user.is_authenticated %}
+
+    <p>
+        <a href="{% url 'add-to-cart' product.slug %}" class="panier" >
+            Ajouter dans le panier
+        </a>
+    </p>
+
+    {% else %}
+    <a href="{% url 'login' %}" class="panier">Connectez-vous pour acheter cet article</a>
+
+    {% endif %}
+    </p>
+</section>
+
+{% endblock %}

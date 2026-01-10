@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+
+<style>
+    #section-accueil {
+        text-align:center;
+        font-size: 30px;
+        background: #FADFDF;
+    }
+
+    #section-accueil .texte-accueil{
+        font-size: 30px;
+    }
+</style>
+
+<section id="section-accueil" >
+    <p>
+       <div id="head" class="vh-100">
+        <img src="static/images/logo_kaj.jpg" alt="kaj" style="max-with:250px; max-height:250px; margin-top:40px; margin-bottom:30px; border-radius:10px;">
+        <h1>Bienvenu dans la boutique KAJ 237</h1>
+        <h2>Votre satisfaction est notre garantie</h2>
+        <p class="texte-accueil">Effectuez des achats de nos produits et faites-vous livrez sur l'ensemble du territoire camerounais !!
+        Tout nos sont neuf et de qualite superieure a la moyenne.</p>
+        <p class="texte-accueil">
+            Les prix mis sur les produit sont inclus avec la livraison et ce peu importe votre lieu de livraison
+            Tout produit electronique acheter sera sans garanti apparente mais sera vendu neuf et en etat, tout degat que vous feriez
+            seront a vos risque et peril pour manipulation malencontreuse.
+
+            <br><br>
+            Sur ce BON MARCHE ;)
+        </p>
+    </div>
+    </p>
+
+</section>
+
+{% endblock %}

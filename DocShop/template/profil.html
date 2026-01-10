@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+
+    * {
+        text-align: center;
+    }
+
+</style>
+
+<div class="min-vh-100">
+    <h1>Mon Compte</h1>
+    <br><br>
+    <h2>Nom d'utilisateur: </h2>{{ user.username }}<br><br>
+    <h2>Adresse e-mail : </h2>{{ user.email }}<br><br>
+    <h2>Mot de passe (crypte) : </h2>{{ user.password }}<br><br>
+</div>
+
+{% endblock %}

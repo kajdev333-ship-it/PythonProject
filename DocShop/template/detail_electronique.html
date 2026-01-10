@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<style>
+    .panier-electronique{
+        color:#444;
+        background-color:#f9f9f9;
+        padding:10px;
+        border-radius:10px;
+        margin-bottom:40px;
+        text-transform:uppercase;
+
+    }
+    .panier-electronique:hover{
+        background:#1cff66;
+    }
+
+    .detail-electroniq{
+        width:auto;
+        height:auto;
+        background:#0a86ff;
+        border-radius:10px;
+        margin-bottom:20px;
+        text-align:center;
+    }
+    h2, h3, p{
+        text-align:center;
+        text-transform:uppercase;
+    }
+</style>
+
+<section class="detail-electroniq min-vh-100">
+    <p>
+        <h2>{{ Electronique.name }}</h2>
+    <h3>{{ Electronique.price }} FR</h3>
+    <img src="{{ Electronique.thumbnail.url }}" alt="{{ Electronique.name }}" style="max-width: 450px; max-height: 500px;">
+    <p> {{ Electronique.description }}</p>
+    <p> {{ Electronique.stock }} en stock</p><br>
+
+    {% if user.is_authenticated %}
+
+         <p>
+             <a href="{% url 'add-to-cart-electronique' Electronique.slug %}" class="panier-electronique" >
+                 Ajouter dans le panier electronique
+            </a>
+         </p>
+
+     {% else %}
+    <a href="{% url 'login' %}" class="panier-electronique">Connectez-vous pour acheter cet article</a>
+    {% endif %}
+    </p>
+
+</section>
+
+
+
+
+
+{% endblock %}

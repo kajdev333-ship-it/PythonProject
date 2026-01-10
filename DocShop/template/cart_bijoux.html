@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+  .delete-bijoux {
+    color: #fff;
+    background-color: blue;
+    padding: 10px;
+    border-radius: 10px;
+    float: right;
+    margin-right: 20px;
+    text-transform: uppercase;
+  }
+  .delete-bijoux:hover {
+    background-color: #ff0000;
+  }
+  .panier-bijoux {
+    width: 400px;
+    height: 600px;
+    background: #8d1e3a;
+    border-radius: 10px;
+    margin: 20px;
+    text-align: center;
+  }
+  h2, p {
+    text-align: center;
+    text-transform: uppercase;
+  }
+  nav ul li {
+    float: left;
+    list-style: none;
+  }
+  nav {
+    display: inline-block;
+  }
+  .buy {
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+  }
+  .buy:hover {
+    background-color: #444;
+  }
+  #delete {
+    padding: 5px;
+  }
+  #delete:hover {
+    background-color: red;
+  }
+</style>
+
+<a class="delete-bijoux" href="{% url 'delete-cart-bijoux' %}">Vider le panier bijoux</a>
+{% for order in orders %}
+<nav>
+  <ul>
+    <li>
+      <div class="panier-bijoux">
+        <p>
+          <h2>{{ order.Bijoux.name }}</h2>
+          <h2>{{ order.Bijoux.price }} XAF</h2>
+          <img src="{{ order.Bijoux.thumbnail.url }}" alt="{{ order.Bijoux.name }}" style="max-width: 250px; max-height: 500px;">
+          <p>{{ order.quantity }} dans le panier</p><br>
+          <form action="{% url 'buyb' order.Bijoux.slug %}" method="post">
+            {% csrf_token %}
+            <label for="quantity-{{ order.id }}">QUANTITE</label>
+            <input id="quantity-{{ order.id }}" type="number" name="quantity" value="{{ order.quantity }}" style="max-width: 50px;" min="1">
+            <br><br>
+            <button type="submit" class="buy">Acheter</button>
+          </form>
+          <br>
+          <form action="{% url 'supprimer_order_bijoux' order.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit" id="delete">Supprimer</button>
+          </form>
+        </p>
+      </div>
+    </li>
+  </ul>
+</nav>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Boutique KAJ</title>
+    {% load static %}
+
+
+</head>
+<body>
+
+
+<header>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: poppins;
+            text-decoration: none;
+            list-style: none;
+        }
+
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            bottom: 0;
+            width: 100%;
+            height: auto;
+        }
+
+        .newsletter {
+            width: 30%;
+            height: 100%;
+            background-color: #8692f7;
+            border-radius: 20px;
+            position: relative;
+            text-align: center;
+        }
+
+        #email {
+            margin: 3%;
+            border-radius: 5px;
+        }
+
+        #abonner {
+            background-color: #fff;
+            padding: 1%;
+        }
+
+        .social-link {
+            margin-top: 10px;
+        }
+
+        .social-link a {
+            margin: 0 10px;
+            display: inline-block;
+        }
+
+        .social-link img {
+            width: 30px;
+            height: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .social-link a:hover img {
+            transform: scale(1.2);
+        }
+
+        .text {
+            color: black;
+        }
+
+        #accueil {
+            background-color: #c609b7;
+            text-align: center;
+        }
+
+        #accueil:hover {
+            color: #fff;
+        }
+
+        .newsletter h2 {
+            padding-top: 1%;
+        }
+
+        .connexion {
+            background-color: #0082e6;
+            height: 80px;
+            width: 100%;
+        }
+
+        label.logo {
+            color: #f2f2f2;
+            font-size: 35px;
+            line-height: 80px;
+            padding-left: 20px;
+            padding-right: 15px;
+            font-weight: 600;
+        }
+
+        .connexion ul {
+            float: right;
+            margin-right: 60px;
+        }
+
+        .connexion ul li {
+            display: inline-block;
+            line-height: 80px;
+            margin: 0 10px;
+        }
+
+        .connexion ul li a {
+            color: #0082e6;
+            font-weight: 500;
+            font-size: 20px;
+            padding: 5px 10px;
+            border-radius: 50px;
+            background: white;
+            transition: 0.3s;
+            clip-path: polygon (
+            100% 0,
+            100% 35%,
+            100% 50%,
+            100% 65%,
+            100% 100%,
+            0 100%,
+            0 65% 0 50%,
+            0 35%,
+            0 0;
+        )
+        }
+
+        .connexion ul li a:hover {
+            clip-path: polygon (
+            100% 0,
+            100% 35%,
+            100% 50%,
+            100% 65%,
+            100% 100%,
+            0 100%,
+            0 65% 10% 50%,
+            0 35%,
+            0 0;
+        );
+        }
+
+        .checkbox {
+            display: none;
+            float: right;
+            font-size: 30px;
+            color: white;
+            line-height: 80px;
+            margin-right: 40px;
+            cursor: pointer;
+        }
+
+        #check {
+            display: none;
+        }
+
+        @media (max-width: 1060px) {
+            label.logo {
+                padding-left: 25px;
+            }
+
+            nav ul li a {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 850px) {
+            .checkbox {
+                display: block;
+                margin-right: 40px;
+            }
+
+            ul {
+                position: fixed;
+                width: 100%;
+                height: 100vh;
+                background: #2c3e50;
+                top: 80px;
+                left: -100%;
+                text-align: center;
+                transition: all 0.5s;
+            }
+
+            .connexion ul li {
+                position: relative;
+                display: block;
+                width: 250px;
+                height: 60px;
+                margin: 20px auto;
+                background-color: white;
+                border-radius: 50px;
+                transition: 0.3s;
+                clip-path: polygon (
+                100% 0,
+                100% 35%,
+                100% 50%,
+                100% 65%,
+                100% 100%,
+                0 100%,
+                0 65% 0 50%,
+                0 35%,
+                0 0;
+            );
+            }
+
+            .connexion ul li a {
+                background-color: transparent;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50% -50%);
+                font-size: 20px;
+            }
+
+            li:hover {
+                background: #0082ef;
+                clip-path: polygon (
+                100% 0,
+                100% 35%,
+                100% 50%,
+                100% 65%,
+                100% 100%,
+                0 100%,
+                0 65% 10% 50%,
+                0 35%,
+                0 0;
+            );
+            }
+
+            li:hover a {
+                color: white;
+            }
+
+            #check:checked ~ ul {
+                left: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+        }
+
+        .connexion ul li a:hover {
+            background-color: #f1b283;
+        }
+
+        #main-page {
+            height: auto;
+            background: #484848;
+        }
+
+        #main {
+            text-transform: uppercase;
+            text-align: center;
+            padding: 120px 0 40px 0;
+            font-size: 30px;
+            color: #f2f2f2;
+        }
+
+        #main p {
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .cart {
+            background-color: #eea1ff;
+            border-radius: 10px;
+            padding: 5px;
+            position: relative;
+            bottom: 6px;
+        }
+
+        .cart:hover {
+            background-color: #f1b283;
+        }
+
+        #user_image {
+            position: relative;
+            bottom: 20px;
+            left: 25px;
+        }
+
+        #logos {
+            max-with: 30px;
+            max-height: 30px;
+            border-radius: 5px;
+            position: relative;
+            left: 15px;
+            top: 3px;
+        }
+
+        .service:hover {
+            background-color: #f1b283;
+        }
+
+    </style>
+
+    <nav class="connexion">
+
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbox">
+            <i class="fas fa-bars"></i>
+        </label>
+        <img src="{% static 'images/logo_kaj.jpg' %}" alt="kaj" id="logos">
+        <label class="logo">KAJ</label>
+        <ul>
+
+            <li><a href="{% url 'accueil' %}">Accueil</a></li>
+            <li><a href="{% url 'index' %}">Textile</a></li>
+            <li><a href="{% url 'electronique' %}">Electronique</a></li>
+            <li><a href="{% url 'cosmetique' %}">Cosmetique</a></li>
+            <li><a href="{% url 'bijoux' %}">Bijoux</a></li>
+            {% if user.is_authenticated %}
+            <li>
+                <a class="user" href="{% url 'logout' %}">Deconnexion</a></li>
+
+            <a href="{% url 'profil' %}"><img src="{% static 'images/user.png' %}" alt="user"
+                                              style="max-width:15px; max-height:15px;" id="user_image" class="text-dark">{{ user.username }}</a>
+
+            {% else %}
+            <li><a class="user" href="{% url 'login' %}">Connexion</a></li>
+            <li><a class="user" href="{% url 'signup' %}">S'inscrire</a></li>
+            {% endif %}
+
+        </ul>
+
+
+        {% if user.cart %}
+        <a href="{% url 'cart' %}" class="cart">Panier textile ({{ user.cart.orders.count }})</a>
+        {% endif %}
+
+        {% if user.cart_electronique %}
+        <a href="{% url 'cart_electronique' %}" class="cart">Panier electronique ({{ user.cart_electronique.orders.count }})</a>
+        {% endif %}
+
+        {% if user.cart_cosmetique %}
+        <a href="{% url 'cart_cosmetique' %}" class="cart">Panier cosmetique ({{ user.cart_cosmetique.orders.count }})</a>
+        {% endif %}
+
+        {% if user.cart_bijoux %}
+        <a href="{% url 'cart_bijoux' %}" class="cart">Panier bijoux ({{ user.cart_bijoux.orders.count }})</a>
+        {% endif %}
+
+    </nav>
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</header>
+
+<section id="main-page">
+    <div id="main">
+        <h1>TROUVEZ VOTRE SOLUTION D'ACHAT</h1>
+        <p>
+            KAJ 237 est un marche en ligne sur lequel vous pouvez achetez presque tout et n'importe quoi.
+        </p>
+        <p>
+            Prenez des articles et mettez les dans votre panier et acheter-les plus tard, effectuer des achats en toute
+            securite, exprimez vos besoins grâce a notre Newsletter et faites-vous livrez dans maxi 72 heures en
+            fonction de l'endroit ou vous vous trouvez.
+        </p>
+        <br><br><br>
+
+        <a href="https://mega.nz/file/E31TQB6B#2zwKQ6WxIYrtyLHFK4Sm2aNRfb6oMfqhZB1nGapC8-w" class="service"
+           style="width: 100%; background-color: #fff; padding: 20px; border-radius: 20px; color: #000;">Acceder a
+            l'application Android</a>
+    </div>
+</section>
+
+{% block content %}
+{% endblock %}
+
+
+<footer>
+    <p>©Copyright; 2025 - Tous droits reserves</p>
+
+    <div class="social-link">
+        <a href="https://facebook.com/jordan kamgang" target="_blank">
+            <img src="{% static 'images/logo_facebook.png' %}" alt="Facebook">
+        </a>
+        <a href="https://wa.me/Jordan Kamgang" target="_blank">
+            <img src="{% static 'images/logo_whatsapp.jpg' %}" alt="Whatsapp">
+        </a>
+        <a href="https://instagram.com/CheatBoy79" target="_blank">
+            <img src="{% static 'images/logo_instagram.jpg' %}" alt="Instagram">
+        </a>
+    </div>
+
+    <p>
+
+    <form method="POST" class="newsletter w-50 mx-auto">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p>
+        <h2 class="text">Abonnez-vous a la newsletter</h2>
+        <h4 class="text">et ne manquez rien de nos nouveautees</h4>
+        <input type="email" name="email" id="email" required style="padding: 10px;"><br>
+        <button type="submit" id="abonner">S'abonner</button>
+        <br><br>
+        </p>
+
+    </form>
+
+    {% if message %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    </p>
+</footer>
+
+<!--background-image:url('{% static 'images/real.jpg' %}');
+      background-size: cover;
+      background-position:center;
+      height:450px;-->
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

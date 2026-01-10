@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<style>
+    .panier-bijoux{
+        color:#444;
+        background-color:#3b4eff;
+        padding:10px;
+        border-radius:10px;
+        margin-bottom:40px;
+        text-transform:uppercase;
+
+    }
+    .panier-bijoux:hover{
+        background:#1cff66;
+    }
+
+    .detail-bijoux{
+        width:auto;
+        height:auto;
+        background:#8d1e3a;
+        border-radius:10px;
+        margin-bottom:20px;
+        text-align:center;
+    }
+    h2, h3, p{
+        text-align:center;
+        text-transform:uppercase;
+    }
+</style>
+
+<section class="detail-bijoux min-vh-100">
+    <p>
+        <h2>{{ Bijoux.name }}</h2>
+    <h3>{{ Bijoux.price }} FR</h3>
+    <img src="{{ Bijoux.thumbnail.url }}" alt="{{ Bijoux.name }}" style="max-width: 450px; max-height: 500px;">
+    <p> {{ Bijoux.description }}</p>
+    <p> {{ Bijoux.stock }} en stock</p><br>
+
+    {% if user.is_authenticated %}
+
+    <p>
+        <a href="{% url 'add-to-cart-bijoux' Bijoux.slug %}" class="panier-bijoux" >
+            Ajouter dans le panier bijoux
+        </a>
+    </p>
+
+     {% else %}
+
+    <a href="{% url 'login' %}" class="panier-bijoux">Connectez-vous pour acheter cet article</a>
+    <p>Article indisponible</p>
+    {% endif %}
+    </p>
+</section>
+
+
+
+{% endblock %}
