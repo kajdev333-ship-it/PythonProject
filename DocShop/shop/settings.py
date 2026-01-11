@@ -112,7 +112,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
+BASE_DIR = Path(__file__).resolve().parent.parent
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",               # ← si tu as un dossier static à la racine
+    # Ajoute d'autres dossiers si besoin
+]
 
 NOTCHPAY_API_KEY = 'pk_test.Js1GiyW1VSAJpuxWtcEWGlFPKdKgQuW5IAGrZEf6gtXpUOdnep0jz1U79js4Mr73j0nNYEGjI0zuNxJJBDR9jbpwUTlFAwsggrhFBA3PWvgKkElkGNiYjDxcD0ows'
 NOTCHPAY_GRANT_KEY = 'sk_test.PcFBnwnnS43IJpNiblFCM1DVvlBqhK3CieqVp5W3X2vvt0V0pOW0geodiBzsZmergxXlZnCDWIu9FDjFtGYeURub9IMHi47aHupFWVJ5USYz6IsxCiNbnySoOEWKH'
