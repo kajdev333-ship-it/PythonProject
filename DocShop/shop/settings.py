@@ -121,6 +121,8 @@ STATICFILES_DIRS = [
     # Ajoute d'autres dossiers si besoin
 ]
 
+STATIC_ROOT = '/home/Kaj/PythonProject/DocShop/static'
+
 NOTCHPAY_API_KEY = 'pk_test.Js1GiyW1VSAJpuxWtcEWGlFPKdKgQuW5IAGrZEf6gtXpUOdnep0jz1U79js4Mr73j0nNYEGjI0zuNxJJBDR9jbpwUTlFAwsggrhFBA3PWvgKkElkGNiYjDxcD0ows'
 NOTCHPAY_GRANT_KEY = 'sk_test.PcFBnwnnS43IJpNiblFCM1DVvlBqhK3CieqVp5W3X2vvt0V0pOW0geodiBzsZmergxXlZnCDWIu9FDjFtGYeURub9IMHi47aHupFWVJ5USYz6IsxCiNbnySoOEWKH'
 NOTCHPAY_WEBHOOK_SECRET = 'hsk_test.mKKHd3H4u8oW16qki0DvCMFtxieejtkOMjcQVOuTaoFTj2J7Fm99qmqrtpP1I2dQqrYNlDhd90BTOF4EJn8yw3nQ5Y1S6fgH6175P5hPgF74hziej13i0CtTw1a1Q'
